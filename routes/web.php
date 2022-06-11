@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,40 +15,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('coba');
 });
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard.index');
 })->name('dashboard');
 
+Route::group([
+    'prefix' => 'admin',
+    'namespace' => 'Admin',
+    'as' => 'admin.'
+], function () {
+    // Route::group(['middleware' => ['role:admin', 'auth']], function () {
+        Route::resource('jenis-pelanggaran', JenisLaporanController::class);
+        Route::resource('gambar', GambarController::class);
+    // });
+});
+
 Route::get('/laporan', function () {
     return view('admin.laporan.index');
 })->name('laporan');
 
-Route::get('/jenis-laporan', function () {
-    return view('admin.laporan.kategori.index');
-})->name('jenis-laporan');
-
-Route::get('/jenis-laporan/create', function () {
-    return view('admin.laporan.kategori.create');
-})->name('jenis-laporan.create');
-
-Route::get('/jenis-laporan/edit', function () {
-    return view('admin.laporan.kategori.edit');
-})->name('jenis-laporan.edit');
-
-Route::get('/gambar', function () {
-    return view('admin.gambar.index');
-})->name('gambar');
-
-Route::get('/gambar/create', function () {
-    return view('admin.gambar.create');
-})->name('gambar.create');
-
-Route::get('/gambar/edit', function () {
-    return view('admin.gambar.edit');
-})->name('gambar.edit');
 
 Route::get('/video', function () {
     return view('admin.video.index');

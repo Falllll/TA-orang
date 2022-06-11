@@ -10,7 +10,8 @@
                 <i class="fas fa-list mr-3"></i> Jenis Pelanggaran Form
             </p>
             <div class="leading-loose">
-                <form class="p-10 bg-white rounded shadow-xl">
+                <form action="{{ route('admin.jenis-pelanggaran.store') }}" class="p-10 bg-white rounded shadow-xl" method="POST">
+                    @csrf
                     <div class="">
                         <label class="block text-sm text-gray-600" for="name">Jenis Pelanggran</label>
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" id="name" name="name" type="text" required="" placeholder="Jenis Pelanggaran" aria-label="Name">

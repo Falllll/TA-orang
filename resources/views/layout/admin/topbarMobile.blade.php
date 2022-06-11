@@ -18,11 +18,11 @@
                     <i class="fas fa-sticky-note mr-3"></i>
                     Laporan
                 </a>
-                <a href="{{ route('jenis-laporan') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="{{ route('admin.jenis-pelanggaran.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-table mr-3"></i>
                     Jenis Laporan
                 </a>
-                <a href="{{ route('gambar') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="{{ route('admin.gambar.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-align-left mr-3"></i>
                     Gambar
                 </a>

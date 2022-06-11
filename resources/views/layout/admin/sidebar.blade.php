@@ -17,10 +17,10 @@
                 <li class=""><a class="flex items-center text-gray-600 nav-item2 py-4 pl-6"
                         href="{{ route('laporan') }}"><i class="fas fa-table mr-3"></i>Laporan</a></li>
                 <li class=""><a class="flex items-center text-gray-600 nav-item2 py-4 pl-6 "
-                        href="{{ route('jenis-laporan') }}"><i class="fas fa-clone mr-3"></i></i>Jenis Laporan</a></li>
+                        href="{{ route('admin.jenis-pelanggaran.index') }}"><i class="fas fa-clone mr-3"></i></i>Jenis Laporan</a></li>
             </ul>
         </div>
-        <a href="{{ route('gambar') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <a href="{{ route('admin.gambar.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
             <i class="fas fa-sticky-note mr-3"></i>
             Gambar
         </a>
