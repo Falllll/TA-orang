@@ -72,4 +72,7 @@ Route::get('/login', function () {
 
 Route::get('/home', function () {
     return view('coba');
-})->name('home');
+})->name('home');Auth::routes();
+
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
