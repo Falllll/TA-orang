@@ -25,7 +25,7 @@
                         <div>
                             <label class="font-bold text-lg" for="image">Gambar<span class="text-red-600">*</span></label>
                         </div>
-                        <img class="w-56 h-20 object-cover object-center" src="/public/image/{{ $gambar->image }}" alt="">
+                        <img class="w-56 h-20 object-cover object-center" src="/img/gambar/{{ $gambar->image }}" alt="">
                         <div class='flex flex-col items-center justify-center w-full'>
                             <label for="image"
                                 class='flex flex-col border-4 border-dashed w-full h-46 hover:bg-gray-100 hover:border-purple-300 group'>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Member\HomeController;
 
 
 /*
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('admin.dashboard.index');
 })->name('dashboard');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group([
     'prefix' => 'admin',

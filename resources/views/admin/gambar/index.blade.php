@@ -31,8 +31,8 @@
                         <td class="py-4 px-6 border-b border-grey-light">{{ $loop->iteration }}</td>
                         <td class="py-4 px-6 border-b border-grey-light">
                             {{-- @if ($data->image) --}}
-                            <img class="w-56 h-20 object-cover object-center" src="/public/image/{{ $item->image }}"
-                                alt="aparatur-desa">
+                            <img class="w-56 h-20 object-cover object-center" src="/img/gambar/{{ $item->image }}"
+                                alt="Gambar">
                             {{-- @else
                             <img class="w-56 h-20 object-cover object-center" src="{{ asset('img/no-image.png') }}" alt="no-image">
                             @endif --}}

@@ -53,7 +53,7 @@ class GambarController extends Controller
         if($request->file('image')){
             $file= $request->file('image');
             $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('public/image'), $filename);
+            $file-> move(public_path('img/gambar'), $filename);
             $images['image']= $filename;
         }
         $images->save();
