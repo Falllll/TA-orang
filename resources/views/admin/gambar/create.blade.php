@@ -10,7 +10,7 @@
                 <i class="fas fa-list mr-3"></i> Gambar Form
             </p>
             <div class="leading-loose">
-                <form action="{{ route('admin.gambar.store') }}" class="p-10 bg-white rounded shadow-xl" method="POST">
+                <form action="{{ route('admin.gambar.store') }}" class="p-10 bg-white rounded shadow-xl" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="">
                         <label class="block text-sm text-gray-600" for="title">Judul</label>
@@ -20,7 +20,7 @@
                         <label class="block text-sm text-gray-600" for="content">Isi</label>
                         <textarea  class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded" name="content" id="title" cols="" rows="5" placeholder="Isi"></textarea>
                     </div>
-                    
+
                     <div class="grid flex justify-between grid-cols-1 gap-4 my-3">
                         <div>
                             <label class="font-bold text-lg" for="image">Gambar<span class="text-red-600">*</span></label>
@@ -38,8 +38,9 @@
                                     class="{{ $errors->has('image') ? 'is-invalid' : '' }}" />
                             </label>
                         </div>
+                    </div>
                     <div class="mt-6">
-                        <button class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Tambah</button>
+                        <button type="submit" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded" type="submit">Tambah</button>
                     </div>
                 </form>
             </div>

@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Gambar;
+use App\Models\videos;
 use Illuminate\Support\Facades\File;
 
-class GambarController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class GambarController extends Controller
      */
     public function index()
     {
-        $gambar = Gambar::latest()->get();
+        $video = videos::latest()->get();
 
-        return view ('admin.gambar.index')
-            ->with('gambar', $gambar);
+        return view ('admin.video.index')
+            ->with('video', $video);
     }
 
     /**
@@ -29,7 +29,7 @@ class GambarController extends Controller
      */
     public function create()
     {
-        return view ('admin.gambar.create');
+        return view ('admin.video.create');
     }
 
     /**
@@ -40,29 +40,23 @@ class GambarController extends Controller
      */
     public function store(Request $request)
     {
-        //script validasi
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'image' => 'image'
         ]);
 
-        $images = new Gambar();
-        $images->title = $request->title;
-        $images->content = $request->content;
-        if($request->file('image')){
-            $file= $request->file('image');
+        $video = new videos();
+        $video->title = $request->title;
+        $video->content = $request->content;
+        if($request->file('video')){
+            $file= $request->file('video');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/image'), $filename);
-            $images['image']= $filename;
+            $video['video']= $filename;
         }
-        $images->save();
+        $video->save();
 
-
-        // ubah format tanggal
-        // $date =  date('y-m-d', strtotime($request->date));
-
-        return redirect('admin/gambar')->with('status', 'News created!');
+        return redirect('admin/video')->with('status', 'News created!');
     }
 
     /**
@@ -73,7 +67,7 @@ class GambarController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -84,10 +78,10 @@ class GambarController extends Controller
      */
     public function edit($id)
     {
-        $gambar = Gambar::findOrFail($id);
+        $video = videos::findOrFail($id);
 
-        // return view('admin.pengajuan-kegiatan.edit',compact('pengajuanKegiatan'));
-        return view ('admin.gambar.edit', compact('gambar'));
+        return view ('admin.video.edit', compact('video'));
+
     }
 
     /**
@@ -102,31 +96,27 @@ class GambarController extends Controller
         $validateData = $request->validate([
             'title' => 'required|max:255',
             'content' => 'required',
-            'image' => 'image'
+            'video' => 'video'
         ]);
 
-        $images = Gambar::findOrFail($id);
-        $images->title = $request->title;
-        $images->content = $request->content;
-        if($request->file('image')){
-            $image_path = public_path("/public/image/".$images->image);
-            if (File::exists($image_path)) {
-                File::delete($image_path);
+        $video = videos::findOrFail($id);
+        $video->title = $request->title;
+        $video->content = $request->content;
+        if($request->file('video')){
+            $video_path = public_path("/public/image/".$video->video);
+            if (File::exists($video_path)) {
+                File::delete($video_path);
             }
-            $file= $request->file('image');
+            $file= $request->file('video');
             $filename= date('YmdHi').$file->getClientOriginalName();
             $file-> move(public_path('public/image'), $filename);
-            $images['image']= $filename;
+            $video['video']= $filename;
         } else{
-            unset($images['image']);
+            unset($video['video']);
         }
-        $images->update();
+        $video->update();
 
-
-        // ubah format tanggal
-        // $date =  date('y-m-d', strtotime($request->date));
-
-        return redirect('admin/gambar')->with('status', 'News created!');
+        return redirect('admin/video')->with('status', 'News created!');
     }
 
     /**
@@ -137,8 +127,8 @@ class GambarController extends Controller
      */
     public function destroy($id)
     {
-        Gambar::where('id', $id)->delete();
+        videos::where('id', $id)->delete();
 
-        return redirect()->route('admin.gambar.index');
+        return redirect()->route('admin.video.index');
     }
 }

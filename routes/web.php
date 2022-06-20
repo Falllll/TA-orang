@@ -30,6 +30,8 @@ Route::group([
     // Route::group(['middleware' => ['role:admin', 'auth']], function () {
         Route::resource('jenis-pelanggaran', JenisLaporanController::class);
         Route::resource('gambar', GambarController::class);
+        Route::resource('video', VideoController::class);
+        Route::resource('test', TestController::class);
     // });
 });
 
@@ -38,9 +40,9 @@ Route::get('/laporan', function () {
 })->name('laporan');
 
 
-Route::get('/video', function () {
-    return view('admin.video.index');
-})->name('video');
+// Route::get('/video', function () {
+//     return view('admin.video.index');
+// })->name('video');
 
 Route::get('/video/create', function () {
     return view('admin.video.create');
