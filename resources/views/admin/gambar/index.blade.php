@@ -21,7 +21,8 @@
                     <tr>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">No</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">Gambar</th>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Text</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Judul</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Content</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6">Aksi</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                             @endif --}}
                         </td>
                         <td class="py-4 px-6 border-b border-grey-light">{{$item->title}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$item->content}}</td>
                         <td class="flex space-x-2 py-4 px-6 border-b border-grey-light">
                             <a href="{{ route('admin.gambar.edit', $item->id) }}">
                                 <div
