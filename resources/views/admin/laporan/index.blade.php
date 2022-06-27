@@ -22,21 +22,24 @@
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">No</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">Jenis Pelanggaran</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Isi Laporan</th>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @php
-                        $i = 1;
-                    @endphp
-
-
+                    @foreach ($laporan as $item)
+                        <tr class="hover:bg-grey-lighter">
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $loop->iteration }}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$item->jenisLaporan->name}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$item->isi}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+{{--
 
                     <tr class="hover:bg-grey-lighter">
                         <td class="py-4 px-6 border-b border-grey-light">{{$i++}}</td>
                         <td class="py-4 px-6 border-b border-grey-light">Pelecehan</td>
                         <td class="py-4 px-6 border-b border-grey-light">Dilecehkan</td>
-                        <td class="flex space-x-2 py-4 px-6 border-b border-grey-light">
+                        <td class="flex space-x-2 py-4 px-6 border-b border-grey-light"> --}}
                             {{-- <a href="#">
                                 <div
                                     class="bg-green-500 inline-block py-1 px-2 hover:bg-green-700 text-white font-normal rounded transition duration-300">
@@ -50,7 +53,7 @@
                                     </svg>
                                 </div>
                             </a> --}}
-                            <form action="#" method="post">
+                            {{-- <form action="#" method="post">
                                 <button type="submit"
                                     class="bg-red-500 hover:bg-red-700 text-white font-normal py-1 px-2 rounded transition duration-300"
                                     onclick="return confirm('anda yakin ingin menghapus data?');">
@@ -61,12 +64,12 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </button>
-                            </form>
-                        </td>
-                    </tr>
+                            </form> --}}
+                        {{-- </td>
+                    </tr> --}}
 
 
-                </tbody>
+                {{-- </tbody> --}}
             </table>
         </div>
     </div>

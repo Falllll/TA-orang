@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\JenisLaporan;
 use App\Models\Pengaduan;
 
-class LaporanController extends Controller
+class PengaduanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +16,10 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        $laporan = Pengaduan::with('jenisLaporan')->latest()->paginate(5);
+        $categories = JenisLaporan::all();
 
-        return view('admin.laporan.index')
-        ->with ('laporan', $laporan);
+        return view('member.pengaduan.create')
+            ->with('categories', $categories);
     }
 
     /**
@@ -28,7 +29,7 @@ class LaporanController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -39,7 +40,27 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //script validasi
+        $rules = [
+            'isi' => 'required',
+            'jenis_pengaduan_id' => 'required',
+        ];
+
+        $messages = [
+            'isi.required' => 'Nama harus diisi',
+            'jenis_pengaduan_id.required' => 'Jenis Pengaduan harus diisi',
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        // simpan
+        $category = new Pengaduan;
+        $category->jenis_pengaduan_id = $request->jenis_pengaduan_id;
+        $category->isi = $request->isi;
+        // dd($category);
+        $category->save();
+
+        return redirect('member/pengaduan')->with('status', 'Category created!');
     }
 
     /**

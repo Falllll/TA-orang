@@ -26,6 +26,17 @@ Route::get('/dashboard', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group([
+    'prefix' => 'member',
+    'namespace' => 'Member',
+    'as' => 'member.'
+], function () {
+    // Route::group(['middleware' => ['role:member', 'auth']], function () {
+        Route::resource('pengaduan', PengaduanController::class);
+
+    // });
+});
+
+Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'as' => 'admin.'
@@ -35,6 +46,7 @@ Route::group([
         Route::resource('gambar', GambarController::class);
         Route::resource('video', VideoController::class);
         Route::resource('test', TestController::class);
+        Route::resource('laporan', LaporanController::class);
     // });
 });
 
