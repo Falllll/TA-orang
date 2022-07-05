@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Member\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 /*
@@ -30,10 +31,10 @@ Route::group([
     'namespace' => 'Member',
     'as' => 'member.'
 ], function () {
-    // Route::group(['middleware' => ['role:member', 'auth']], function () {
+    Route::group(['middleware' => 'auth'], function () {
         Route::resource('pengaduan', PengaduanController::class);
 
-    // });
+    });
 });
 
 Route::group([
@@ -41,13 +42,15 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    // Route::group(['middleware' => ['role:admin', 'auth']], function () {
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('jenis-pelanggaran', JenisLaporanController::class);
         Route::resource('gambar', GambarController::class);
         Route::resource('video', VideoController::class);
         Route::resource('test', TestController::class);
         Route::resource('laporan', LaporanController::class);
-    // });
+        Route::resource('pengguna-terdaftar', UserController::class);
+    });
 });
 
 Route::get('/laporan', function () {
@@ -80,5 +83,5 @@ Route::get('/home', function () {
     return view('coba');
 })->name('home');Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('coba');
 

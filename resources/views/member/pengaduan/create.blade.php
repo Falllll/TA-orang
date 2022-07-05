@@ -61,15 +61,17 @@
     </head>
 <body>
     <main class="w-full flex-grow p-6 bg-blue-500">
-        <h1 class="text-3xl text-black pb-6">Form Pengaduan</h1>
+        <a href="{{route('home')}}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Kembali Halaman Awal
+          </a >
 
         <div class="w-full mt-12">
             <div class="w-full my-6 pr-0 lg:pr-2">
-                <p class="text-xl pb-6 flex items-center">
-                    <i class="fas fa-list mr-3"></i> Pengaduan   Form
+                <p class="mt-8 text-xl pb-1 pt-3 flex items-center bg-white">
+                    <i class="ml-5 fas fa-list mr-3 bg-white"></i> Pengaduan   Form
                 </p>
                 <div class="leading-loose">
-                    <form action="{{route('member.pengaduan.store')}}" class="p-10 bg-white rounded shadow-xl" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('member.pengaduan.store')}}" class="p-4 bg-white rounded shadow-xl" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="">
                             <label class="block text-sm text-gray-600" for="title">Jenis Pengaduan</label>

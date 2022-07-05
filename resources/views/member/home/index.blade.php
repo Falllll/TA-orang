@@ -37,14 +37,17 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
-              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="#">Lapor</a>
+              <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{route('member.pengaduan.index')}}">Lapor</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Gambar</a>
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#gambar">Gambar</a>
             </li>
             <li class="mr-3">
-              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#">Video</a>
+              <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="#video">Video</a>
             </li>
+            <li class="mr-3">
+                <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{route('register')}}">Register</a>
+              </li>
           </ul>
           <a href="{{route('login')}}"
             id="navAction"
@@ -65,7 +68,7 @@
       </div>
     </div>
 
-    <section class="bg-white border-b py-8">
+    <section id="gambar" class="bg-white border-b py-8">
       <div class="container max-w-5xl mx-auto m-8">
         <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
           Gambar
@@ -96,7 +99,7 @@
       </div>
     </section>
 
-    <section class="bg-white border-b py-8">
+    <section id="video" class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
           <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
             Video
@@ -160,9 +163,9 @@
       <h3 class="my-4 text-3xl leading-tight">
         Jangan tutup mata dengan kejadian sekitar anda!!
       </h3>
-      <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+      <a href="{{route('member.pengaduan.index')}}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
         Lapor
-      </button>
+      </a >
     </section>
     <!--Footer-->
     <footer class="bg-white">
