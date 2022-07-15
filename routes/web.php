@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Member\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
 
 
 /*
@@ -22,15 +24,35 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard.index');
 })->name('dashboard');
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/edukasi-gambar', [HomeController::class, 'indexGambar'])->name('indexGambar');
+Route::get('/edukasi-video', [HomeController::class, 'indexVideo'])->name('indexVideo');
+
+Route::group([
+    'prefix' => 'member',
+    'namespace' => 'Member',
+    'as' => 'member.'
+], function () {
+    Route::group(['middleware' => ['auth', 'role:member']], function () {
+        Route::resource('pengaduan', PengaduanController::class);
+
+    });
+});
+
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    // Route::group(['middleware' => ['role:admin', 'auth']], function () {
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('jenis-pelanggaran', JenisLaporanController::class);
         Route::resource('gambar', GambarController::class);
-    // });
+        Route::resource('video', VideoController::class);
+        Route::resource('test', TestController::class);
+        Route::resource('laporan', LaporanController::class);
+        Route::resource('pengguna-terdaftar', UserController::class);
+    });
 });
 
 Route::get('/laporan', function () {
@@ -38,9 +60,9 @@ Route::get('/laporan', function () {
 })->name('laporan');
 
 
-Route::get('/video', function () {
-    return view('admin.video.index');
-})->name('video');
+// Route::get('/video', function () {
+//     return view('admin.video.index');
+// })->name('video');
 
 Route::get('/video/create', function () {
     return view('admin.video.create');
@@ -63,5 +85,5 @@ Route::get('/home', function () {
     return view('coba');
 })->name('home');Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('coba');
 

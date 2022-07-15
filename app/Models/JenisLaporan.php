@@ -15,4 +15,8 @@ class JenisLaporan extends Model
     {
         return $this->hasMany(Laporan::class);
     }
+
+    public function pengaduan(){
+        return $this->hasMany(Pengaduan::class);
+    }
 }

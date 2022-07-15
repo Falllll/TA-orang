@@ -10,7 +10,7 @@
                 <i class="fas fa-list mr-3"></i> Jenis Pelanggaran Form
             </p>
             <div class="leading-loose">
-                <form method="POST" action="{{route('admin.Jenis-Pelanggaran.update', $categories->id) }})}}">
+                <form method="POST" action="{{route('admin.jenis-pelanggaran.update', $categories->id) }})}}">
                     @method('PUT')
                     @csrf
                     <div class="">

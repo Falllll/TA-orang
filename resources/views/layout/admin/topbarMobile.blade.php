@@ -26,7 +26,7 @@
                     <i class="fas fa-align-left mr-3"></i>
                     Gambar
                 </a>
-                <a href="{{ route('video') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+                <a href="{{ route('admin.video.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
                     <i class="fas fa-tablet-alt mr-3"></i>
                     Video
                 </a>

@@ -9,7 +9,10 @@
                 <div x-show="isOpen" class="absolute w-32 bg-sidebar rounded-lg shadow-lg py-2 mt-16">
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
                     <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                    <button class="w-full text-left block px-4 py-2 hover:bg-indigo-inventory hover:text-white">Logout</button>
+                    </form>
                 </div>
             </div>
         </header>

@@ -21,24 +21,27 @@
                     <tr>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">No</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6 ">Gambar</th>
-                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Text</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Judul</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-3/6">Content</th>
                         <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light w-1/6">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($gambar as $item)
                     <tr class="hover:bg-grey-lighter">
-                        <td class="py-4 px-6 border-b border-grey-light">1</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{ $loop->iteration }}</td>
                         <td class="py-4 px-6 border-b border-grey-light">
                             {{-- @if ($data->image) --}}
-                            <img class="w-56 h-20 object-cover object-center" src="{{asset('img/profile/british shorthair.jpg')}}"
-                                alt="aparatur-desa">
+                            <img class="w-56 h-20 object-cover object-center" src="/img/gambar/{{ $item->image }}"
+                                alt="Gambar">
                             {{-- @else
                             <img class="w-56 h-20 object-cover object-center" src="{{ asset('img/no-image.png') }}" alt="no-image">
                             @endif --}}
                         </td>
-                        <td class="py-4 px-6 border-b border-grey-light">Dilecehkan</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$item->title}}</td>
+                        <td class="py-4 px-6 border-b border-grey-light">{{$item->content}}</td>
                         <td class="flex space-x-2 py-4 px-6 border-b border-grey-light">
-                            <a href="#">
+                            <a href="{{ route('admin.gambar.edit', $item->id) }}">
                                 <div
                                     class="bg-green-500 inline-block py-1 px-2 hover:bg-green-700 text-white font-normal rounded transition duration-300">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -51,7 +54,9 @@
                                     </svg>
                                 </div>
                             </a>
-                            <form action="#" method="post">
+                            <form action="{{ route('admin.gambar.destroy', $item->id) }}" method="post">
+                                @method('delete')
+                                @csrf
                                 <button type="submit"
                                     class="bg-red-500 hover:bg-red-700 text-white font-normal py-1 px-2 rounded transition duration-300"
                                     onclick="return confirm('anda yakin ingin menghapus data?');">
@@ -65,6 +70,7 @@
                             </form>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

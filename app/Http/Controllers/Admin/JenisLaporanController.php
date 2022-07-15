@@ -41,6 +41,7 @@ class JenisLaporanController extends Controller
      */
     public function store(Request $request)
     {
+        //script validasi
         $rules = [
             'name' => 'required|max:25',
         ];

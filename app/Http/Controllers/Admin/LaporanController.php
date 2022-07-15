@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Pengaduan;
 
 class LaporanController extends Controller
 {
@@ -14,7 +15,10 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        //
+        $laporan = Pengaduan::with('jenisLaporan')->latest()->paginate(5);
+
+        return view('admin.laporan.index')
+        ->with ('laporan', $laporan);
     }
 
     /**
