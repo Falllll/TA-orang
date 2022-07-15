@@ -25,13 +25,15 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/edukasi-gambar', [HomeController::class, 'indexGambar'])->name('indexGambar');
+Route::get('/edukasi-video', [HomeController::class, 'indexVideo'])->name('indexVideo');
 
 Route::group([
     'prefix' => 'member',
     'namespace' => 'Member',
     'as' => 'member.'
 ], function () {
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth', 'role:member']], function () {
         Route::resource('pengaduan', PengaduanController::class);
 
     });
@@ -42,7 +44,7 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => ['auth', 'role:admin']], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('jenis-pelanggaran', JenisLaporanController::class);
         Route::resource('gambar', GambarController::class);

@@ -16,4 +16,20 @@ class HomeController extends Controller
         return view ('member.home.index',compact(['gambar', 'video']));
         // ->with('gambar', $gambar, 'video', $video);
     }
+
+    public function indexGambar() {
+        $gambar = Gambar::all();
+        $video  = videos::all();
+
+        return view ('member.home.index-gambar',compact(['gambar', 'video']));
+        // ->with('gambar', $gambar, 'video', $video);
+    }
+
+    public function indexVideo() {
+        $gambar = Gambar::all();
+        $video  = videos::all();
+
+        return view ('member.home.index-video',compact(['gambar', 'video']));
+        // ->with('gambar', $gambar, 'video', $video);
+    }
 }

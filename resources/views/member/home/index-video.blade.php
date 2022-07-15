@@ -37,6 +37,9 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             <li class="mr-3">
+                <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="/">Home</a>
+            </li>
+            <li class="mr-3">
               <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{route('member.pengaduan.index')}}">Lapor</a>
             </li>
             <li class="mr-3">
@@ -45,31 +48,16 @@
             <li class="mr-3">
               <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/edukasi-video">Video</a>
             </li>
-
-              @if(Route::has('login'))
-                  @auth
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4">Logout</button>
-                    </form>
-                  @else
-                  <a href="{{route('login')}}"
-                  id="navAction"
-                  class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                  >
-                      Login
-                  </a>
-                      @if (Route::has('register'))
-                      <li class="mr-3">
-                        <a class="mx-auto lg:mx-0 hover:underline bg-blue-700 text-gray-100 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"  href="{{route('register')}}">Register</a>
-                      </li>
-                      @endif
-                  @endauth
-          @endif
+            <li class="mr-3">
+                <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="{{route('register')}}">Register</a>
+              </li>
           </ul>
-
-
-
+          <a href="{{route('login')}}"
+            id="navAction"
+            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+          >
+            Login
+        </a>
         </div>
       </div>
       <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
@@ -83,36 +71,6 @@
       </div>
     </div>
 
-    <section id="gambar" class="bg-white border-b py-8">
-      <div class="container max-w-5xl mx-auto m-8">
-        <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Gambar
-        </h1>
-        <div class="w-full mb-4">
-          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
-
-        @foreach ($gambar as $data )
-        <div class="flex flex-wrap flex-col-reverse sm:flex-row">
-            <div class="w-full sm:w-1/2 p-6 mt-6">
-                <img src="/img/gambar/{{ $data->image }}" alt="Gambar">
-            </div>
-            <div class="w-full sm:w-1/2 p-6 mt-6">
-                <div class="align-middle">
-                    <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                        {{ $data->title }}
-                    </h3>
-                    <p class="text-gray-600 mb-8">
-                        {{ $data->content }}
-                        <br />
-                        <br />
-                    </p>
-                </div>
-            </div>
-        </div>
-        @endforeach
-      </div>
-    </section>
 
     <section id="video" class="bg-white border-b py-8">
         <div class="container max-w-5xl mx-auto m-8">
@@ -168,20 +126,7 @@
         </g>
       </g>
     </svg>
-    <section class="container mx-auto text-center py-6 mb-12">
-      <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-        Laporkan kejadian sekitar anda
-      </h1>
-      <div class="w-full mb-4">
-        <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
-      </div>
-      <h3 class="my-4 text-3xl leading-tight">
-        Jangan tutup mata dengan kejadian sekitar anda!!
-      </h3>
-      <a href="{{route('member.pengaduan.index')}}" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-        Lapor
-      </a >
-    </section>
+
     <!--Footer-->
     <footer class="bg-white">
       <div class="container mx-auto px-8">

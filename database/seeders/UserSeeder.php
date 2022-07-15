@@ -23,5 +23,18 @@ class UserSeeder extends Seeder
             'address' => 'Jalan Admin',
             'birthdate' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
+
+        $admin->assignRole('admin');
+
+        $member = User::create([
+            'name' => 'member',
+            'email' => 'member@gmail.com',
+            'password' => bcrypt('password'),
+            'nik' => '5553332226662221',
+            'address' => 'Jalan member',
+            'birthdate' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+
+        $member->assignRole('member');
     }
 }
